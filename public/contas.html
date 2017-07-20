@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Olá Mundo</title>
+</head>
+<body>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+	function novaConta(){
+		axios.post('/v1/bankaccounts', {
+			name : 'Conta x',
+			balance : 0
+		})
+		.then(function (response){
+			if (response.status == 200){
+				console.log(response.data);
+			}
+		})
+		.catch(function (error){
+			console.log(error);
+		});
+	}
+
+	function listaContas(){
+		axios.get('/v1/bankaccounts')
+		.then(function(response){
+			console.log(response.data.data);
+		})
+		.catch(function(error){
+			console.log(error);
+		});
+	}
+</script>
+</body>
+</html>
